@@ -55,7 +55,7 @@ const Projects = () => {
       image: projectimg,
       tech: ['React', 'Tailwind', 'CSS', 'Framer Motion'],
       github: 'https://github.com/shubham03eng/portfolio-website.git',
-      live: 'https://example.com',
+      live: 'https://shubhamportfolio-90jr.onrender.com/',
       color: 'from-purple-500 to-indigo-600'
     },
   ];
