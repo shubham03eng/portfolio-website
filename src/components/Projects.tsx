@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { ExternalLink, Github, X } from 'lucide-react';
+import projectimg from '../images/projectimg.png';
+import chatbotimg from '../images/chatbotimg.jpg';
 
 const Projects = () => {
   const [ref, inView] = useInView({
@@ -14,45 +16,45 @@ const Projects = () => {
   const projects = [
     {
       id: 1,
-      title: 'E-commerce Platform',
-      description: 'A modern e-commerce platform built with React, Node.js, and Stripe integration.',
-      fullDescription: 'A comprehensive e-commerce solution featuring user authentication, product catalog, shopping cart, payment processing with Stripe, order management, and admin dashboard. Built with React, Node.js, MongoDB, and deployed on AWS.',
+      title: 'Code Ai',
+      description: ' Just describe your idea, and Code IDE will:',
+      fullDescription: 'Fully automated website generation from a single prompt Cross-platform support (Windows, Linux, macOS) Secure command execution with real-time feedback Extensible and easy to use—no coding required!',
       image: 'https://images.pexels.com/photos/3184360/pexels-photo-3184360.jpeg?auto=compress&cs=tinysrgb&w=800',
-      tech: ['React', 'Node.js', 'MongoDB', 'Stripe', 'AWS'],
-      github: 'https://github.com',
+      tech: ['Javascript', 'Node.js', 'Gemini API',],
+      github: 'https://github.com/shubham03eng/Code-Ai.git',
       live: 'https://example.com',
       color: 'from-blue-500 to-purple-600'
     },
     {
       id: 2,
-      title: 'Task Management App',
-      description: 'A collaborative task management application with real-time updates and team features.',
-      fullDescription: 'A full-featured project management tool with real-time collaboration, drag-and-drop task organization, team chat, file sharing, progress tracking, and detailed analytics. Features include Kanban boards, Gantt charts, and time tracking.',
+      title: 'Personal Expense And Income Tracker',
+      description: 'A application that manage all the income and expense of a user.',
+      fullDescription: 'The Personal Expense Tracker (PET) is a native Android application built with Java and SQLite to provide a comprehensive tool for managing personal finances. It allows users to securely register for an account, log daily income and expenses, and view a detailed transaction history. The app also features a dynamic filtering system to sort transactions and an analytics dashboard that uses charts to visualize spending patterns, helping users make more informed financial decisions.',
       image: 'https://images.pexels.com/photos/3184292/pexels-photo-3184292.jpeg?auto=compress&cs=tinysrgb&w=800',
-      tech: ['React', 'Socket.io', 'Express', 'PostgreSQL', 'Redis'],
+      tech: ['Java', 'sql lite', 'Android Studio'],
       github: 'https://github.com',
       live: 'https://example.com',
       color: 'from-green-500 to-teal-600'
     },
     {
       id: 3,
-      title: 'Weather Dashboard',
-      description: 'A beautiful weather dashboard with location-based forecasts and interactive maps.',
-      fullDescription: 'An intuitive weather application providing detailed forecasts, interactive weather maps, severe weather alerts, and location-based recommendations. Features include 7-day forecasts, hourly updates, UV index, air quality data, and customizable widgets.',
-      image: 'https://images.pexels.com/photos/3184633/pexels-photo-3184633.jpeg?auto=compress&cs=tinysrgb&w=800',
-      tech: ['React', 'TypeScript', 'Tailwind', 'OpenWeather API'],
-      github: 'https://github.com',
+      title: 'Chat bot',
+      description: 'A personal chat bot that trains on users data.',
+      fullDescription: 'this is an a personal chat bot that trains on users data and provide the best result as per the user input. it is built using react for frontend and node js for backend and open weather api for fetching the weather data. it is hardcoded with  data to provide the best result.it has pre planned resposen for your request.  it is a fully responsive website.',
+      image: chatbotimg,
+      tech: ['React', 'Javascript', 'Tailwind', 'Node.js', 'Express.js', 'postman'],
+      github: 'https://github.com/shubham03eng/chatbot.git',
       live: 'https://example.com',
       color: 'from-orange-500 to-pink-600'
     },
     {
       id: 4,
-      title: 'Social Media Dashboard',
-      description: 'A comprehensive social media management tool with analytics and scheduling.',
-      fullDescription: 'A powerful social media management platform that allows users to schedule posts across multiple platforms, analyze engagement metrics, track follower growth, and manage social media campaigns. Includes advanced analytics, content calendar, and team collaboration features.',
-      image: 'https://images.pexels.com/photos/3184464/pexels-photo-3184464.jpeg?auto=compress&cs=tinysrgb&w=800',
-      tech: ['Next.js', 'Prisma', 'GraphQL', 'PostgreSQL', 'Vercel'],
-      github: 'https://github.com',
+      title: 'Portfolio Website',
+      description: 'A modern, interactive portfolio website showcasing my projects, skills, and experience as a developer.',
+      fullDescription: 'This portfolio website is a dynamic and visually engaging platform designed to highlight my journey as a developer. Built using React and styled with Tailwind CSS, it features smooth animations powered by Framer Motion for an immersive user experience. The site includes detailed sections such as About Me, Featured Projects, and more, each crafted to demonstrate both technical proficiency and creative design. Projects are presented with interactive cards and modals, providing in-depth information, technology stacks, and direct links to live demos and source code. The responsive layout ensures seamless browsing across devices, while subtle gradients and background effects add a professional touch. This portfolio not only reflects my technical skills but also my passion for building user-friendly and aesthetically pleasing web applications.',
+      image: projectimg,
+      tech: ['React', 'Tailwind', 'CSS', 'Framer Motion'],
+      github: 'https://github.com/shubham03eng/portfolio-website.git',
       live: 'https://example.com',
       color: 'from-purple-500 to-indigo-600'
     },

@@ -1,6 +1,20 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
+// --- 1. Import the icons you need ---
+import {
+  DiReact,
+  DiNodejsSmall,
+  DiJavascript1,
+  DiGit,
+  DiDatabase,
+} from 'react-icons/di';
+import {
+  SiPostman,
+  SiTailwindcss,
+  SiFramer,
+  SiCplusplus,
+} from 'react-icons/si';
 
 const Skills = () => {
   const [ref, inView] = useInView({
@@ -8,14 +22,18 @@ const Skills = () => {
     threshold: 0.3,
   });
 
+  // --- 2. Update the skills array to include icons ---
+  // Each skill is now an object with a name and an Icon component.
   const skills = [
-    { name: 'C++', level: 90, color: 'from-pink-500 to-rose-600' },
-    { name: 'React/Next.js', level: 85, color: 'from-blue-500 to-blue-600' },
-    { name: 'Javascript', level: 90, color: 'from-blue-600 to-indigo-600' },
-    { name: 'Tailwind CSS', level: 75, color: 'from-teal-500 to-cyan-600' },
-    { name: 'Node.js', level: 80, color: 'from-green-500 to-emerald-600' },
-    { name: 'SQL', level: 75, color: 'from-purple-500 to-pink-600' },
-    
+    { name: 'C++', Icon: SiCplusplus },
+    { name: 'React', Icon: DiReact },
+    { name: 'Postman', Icon: SiPostman },
+    { name: 'JavaScript', Icon: DiJavascript1 },
+    { name: 'Tailwind CSS', Icon: SiTailwindcss },
+    { name: 'Node.js', Icon: DiNodejsSmall },
+    { name: 'SQL', Icon: DiDatabase },
+    { name: 'Git', Icon: DiGit },
+    { name: 'Framer Motion', Icon: SiFramer },
   ];
 
   const containerVariants = {
@@ -30,11 +48,11 @@ const Skills = () => {
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, x: -50 },
+    hidden: { opacity: 0, scale: 0.8 },
     visible: {
       opacity: 1,
-      x: 0,
-      transition: { duration: 0.6 },
+      scale: 1,
+      transition: { duration: 0.4 },
     },
   };
 
@@ -53,57 +71,52 @@ const Skills = () => {
           animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-6">Skills & Expertise</h2>
+          <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-6">
+            Skills & Expertise
+          </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-indigo-600 to-purple-600 mx-auto rounded-full" />
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-8">
+        <div className="grid md:grid-cols-2 gap-12 items-center">
+          {/* Skills Grid */}
           <motion.div
             ref={ref}
             variants={containerVariants}
             initial="hidden"
             animate={inView ? 'visible' : 'hidden'}
-            className="space-y-6"
+            className="grid grid-cols-2 sm:grid-cols-3 gap-6" // Using a standard grid layout
           >
-            {skills.map((skill, index) => (
+            {skills.map((skill) => (
               <motion.div
                 key={skill.name}
                 variants={itemVariants}
-                className="group"
+                className="group relative bg-white border border-gray-200 rounded-lg shadow-sm p-4 flex flex-col items-center justify-center
+                           text-center cursor-pointer transition-all duration-300 transform hover:scale-105 hover:shadow-lg
+                           hover:bg-gradient-to-r hover:from-indigo-600 hover:to-purple-600"
               >
-                <div className="flex justify-between mb-2">
-                  <span className="font-semibold text-gray-800">{skill.name}</span>
-                  <span className="text-gray-600">{skill.level}%</span>
-                </div>
-                <div className="relative h-3 bg-gray-200 rounded-full overflow-hidden">
-                  <motion.div
-                    className={`absolute top-0 left-0 h-full bg-gradient-to-r ${skill.color} rounded-full`}
-                    initial={{ width: 0 }}
-                    animate={inView ? { width: `${skill.level}%` } : { width: 0 }}
-                    transition={{ duration: 1, delay: index * 0.1 }}
-                  />
-                  <motion.div
-                    className="absolute top-0 left-0 h-full bg-white/30 rounded-full"
-                    initial={{ x: '-100%' }}
-                    animate={inView ? { x: '400%' } : { x: '-100%' }}
-                    transition={{ duration: 1.5, delay: index * 0.1 }}
-                  />
-                </div>
+                {/* --- 3. Render the icon and the name --- */}
+                <skill.Icon className="text-4xl sm:text-5xl text-indigo-600 mb-2 transition-colors duration-300 group-hover:text-white" />
+                <p className="font-semibold text-gray-800 transition-colors duration-300 group-hover:text-white">
+                  {skill.name}
+                </p>
               </motion.div>
             ))}
           </motion.div>
 
+          {/* Fresher Circle with Floating Icons */}
           <motion.div
-            className="flex items-center justify-center"
+            className="flex items-center justify-center mt-8 md:mt-0"
             initial={{ opacity: 0, scale: 0.8 }}
-            animate={inView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
+            animate={
+              inView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }
+            }
             transition={{ duration: 0.6, delay: 0.3 }}
           >
             <div className="relative">
               <motion.div
                 className="w-80 h-80 rounded-full bg-gradient-to-br from-indigo-100 via-purple-50 to-pink-100 p-8"
                 animate={{ rotate: 360 }}
-                transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
               >
                 <div className="w-full h-full rounded-full bg-white shadow-xl flex items-center justify-center">
                   <div className="text-center">
@@ -114,33 +127,34 @@ const Skills = () => {
                     >
                       Fresher
                     </motion.div>
-                    {/* <p className="text-gray-600 font-medium">Years of Experience</p> */}
                   </div>
                 </div>
               </motion.div>
-              
-              {/* Floating icons */}
-              {['React', 'JS', 'CSS', 'HTML'].map((tech, index) => (
-                <motion.div
-                  key={tech}
-                  className="absolute w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center text-xs font-bold text-indigo-600"
-                  style={{
-                    top: `${20 + Math.sin(index * 90 * Math.PI / 180) * 120}px`,
-                    left: `${20 + Math.cos(index * 90 * Math.PI / 180) * 120}px`,
-                  }}
-                  animate={{
-                    y: [0, -10, 0],
-                    rotate: [0, 5, -5, 0],
-                  }}
-                  transition={{
-                    duration: 3,
-                    repeat: Infinity,
-                    delay: index * 0.5,
-                  }}
-                >
-                  {tech}
-                </motion.div>
-              ))}
+              {['React', 'JS', 'CSS', 'HTML'].map((tech, index) => {
+                const angle = (index * 90 * Math.PI) / 180;
+                const radius = 120;
+                const centerX = 160;
+                const centerY = 160;
+
+                return (
+                  <motion.div
+                    key={tech}
+                    className="absolute w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center text-xs font-bold text-indigo-600"
+                    style={{
+                      top: `${centerY + Math.sin(angle) * radius - 24}px`,
+                      left: `${centerX + Math.cos(angle) * radius - 24}px`,
+                    }}
+                    animate={{ y: [0, -10, 0], rotate: [0, 5, -5, 0] }}
+                    transition={{
+                      duration: 3,
+                      repeat: Infinity,
+                      delay: index * 0.5,
+                    }}
+                  >
+                    {tech}
+                  </motion.div>
+                );
+              })}
             </div>
           </motion.div>
         </div>
